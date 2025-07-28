@@ -1,16 +1,6 @@
-export default function Button({ children, onClick }) {
+export default function Button({ children, onClick, type = 'button', className = '', ...rest }) {
   return (
-    <button
-      onClick={onClick}
-      style={{
-        padding: "10px 20px",
-        background: "#007bff",
-        color: "#fff",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-      }}
-    >
+    <button type={type} onClick={onClick} className={`btn ${className}`} {...rest}>
       {children}
     </button>
   );
