@@ -1,16 +1,21 @@
 import React from 'react';
-import Header from './Header';
-import Sidebar from './Sidebar';
-// IMPORTA TU CSS GLOBAL REAL:
-import '../../assets/css/styles.css'; // <-- ajusta esta ruta a tu CSS original
+import Sidebar from '../common/Sidebar'; // Importa el Sidebar
 
-export default function AppLayout({ children, title }) {
+export default function AppLayout({ title, children }) {
   return (
-    <div className="app-layout">
-      <Sidebar />
-      <div className="app-content">
-        <Header title={title} />
-        <main className="app-main">{children}</main>
+    <div className="layout">
+      <Sidebar /> {/* Renderiza el menú lateral */}
+      <div className="main-content">
+        <div className="header-top">
+          <h1>{title}</h1>
+          <div className="admin-controls">
+            <strong>Admin</strong>
+            <a href="/index.html" className="logout-btn" onClick={() => alert('Cerrando sesión...')}>Cerrar sesión</a>
+          </div>
+        </div>
+        <main>
+          {children}
+        </main>
       </div>
     </div>
   );

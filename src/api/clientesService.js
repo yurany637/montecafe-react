@@ -1,30 +1,73 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+// Datos de clientes simulados
+let mockClientes = [
+  { id: 'CL001', nombre: 'Juan Pérez', telefono: '3101234567', email: 'juan@example.com', direccion: 'Calle 45, Bogotá' },
+  { id: 'CL002', nombre: 'María Rodríguez', telefono: '3204567890', email: 'maria@correo.com', direccion: 'Cra 10, Medellín' },
+];
 
-export const clientesService = {
-  async getAll() {
-    const response = await fetch(`${API_URL}/clientes`);
-    return response.json();
-  },
-
-  async create(cliente) {
-    const response = await fetch(`${API_URL}/clientes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cliente),
+const clientesService = {
+  // Obtener todos los clientes
+  getAll: () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([...mockClientes]); // Devuelve una copia para evitar mutaciones directas
+      }, 300); // Simula un retraso de red de 300ms
     });
-    return response.json();
   },
 
-  async update(id, cliente) {
-    const response = await fetch(`${API_URL}/clientes/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cliente),
+  // Obtener un cliente por ID
+  getById: (id) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const cliente = mockClientes.find(c => c.id === id);
+        resolve(cliente || null); // Devuelve el cliente o null si no lo encuentra
+      }, 500); // Simula un retraso de red
     });
-    return response.json();
   },
 
-  async remove(id) {
-    await fetch(`${API_URL}/clientes/${id}`, { method: "DELETE" });
+  // Crear un nuevo cliente
+  create: (values) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const newId = `CL${(mockClientes.length + 1).toString().padStart(3, '0')}`; // Genera un ID simple
+        const newCliente = { id: newId, ...values };
+        mockClientes.push(newCliente);
+        console.log('Cliente creado:', newCliente);
+        resolve(newCliente);
+      }, 500);
+    });
   },
+
+  // Actualizar un cliente existente
+  update: (id, values) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const index = mockClientes.findIndex(c => c.id === id);
+        if (index !== -1) {
+          mockClientes[index] = { ...mockClientes[index], ...values, id: id };
+          console.log('Cliente actualizado:', mockClientes[index]);
+          resolve(mockClientes[index]);
+        } else {
+          reject(new Error('Cliente no encontrado para actualizar.'));
+        }
+      }, 500);
+    });
+  },
+
+  // Eliminar un cliente
+  delete: (id) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const initialLength = mockClientes.length;
+        mockClientes = mockClientes.filter(c => c.id !== id);
+        if (mockClientes.length < initialLength) {
+          console.log(`Cliente ${id} eliminado.`);
+          resolve({ success: true, message: `Cliente ${id} eliminado.` });
+        } else {
+          reject(new Error('Cliente no encontrado para eliminar.'));
+        }
+      }, 300);
+    });
+  }
 };
+
+export default clientesService;

@@ -1,71 +1,88 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 
-export default function ClienteForm({ onSubmit }) {
-  const [form, setForm] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    direccion: "",
-    estado: "ACTIVO",
-  });
+export default function ClienteForm({ initialValues, onSubmit, submitting, title }) {
+  const [values, setValues] = useState(initialValues || { nombre: '', telefono: '', email: '', direccion: '' });
+
+  // Actualiza los valores del formulario si initialValues cambian (ej. al editar)
+  useEffect(() => {
+    if (initialValues) {
+      setValues(initialValues);
+    }
+  }, [initialValues]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(form);
-    setForm({
-      nombre: "",
-      email: "",
-      telefono: "",
-      direccion: "",
-      estado: "ACTIVO",
-    });
+    onSubmit(values);
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h2>Registrar Cliente</h2>
-      <input
-        type="text"
-        name="nombre"
-        placeholder="Nombre"
-        value={form.nombre}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="telefono"
-        placeholder="Teléfono"
-        value={form.telefono}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="direccion"
-        placeholder="Dirección"
-        value={form.direccion}
-        onChange={handleChange}
-        required
-      />
-      <select name="estado" value={form.estado} onChange={handleChange}>
-        <option value="ACTIVO">ACTIVO</option>
-        <option value="INACTIVO">INACTIVO</option>
-      </select>
-      <button type="submit">Guardar</button>
-    </form>
+    <div className="form">
+      <h2>{title}</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre del cliente</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ej: Juan Pérez"
+            value={values.nombre}
+            onChange={handleChange}
+            disabled={submitting}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="telefono">Teléfono</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="Ej: 3101234567"
+            value={values.telefono}
+            onChange={handleChange}
+            disabled={submitting}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="cliente@email.com"
+            value={values.email}
+            onChange={handleChange}
+            disabled={submitting}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="direccion">Dirección</label>
+          <input
+            type="text"
+            id="direccion"
+            name="direccion"
+            placeholder="Ej: Calle 123, Bogotá"
+            value={values.direccion}
+            onChange={handleChange}
+            disabled={submitting}
+            required
+          />
+        </div>
+        <button type="submit" disabled={submitting}>
+          {submitting ? 'Guardando...' : title}
+        </button>
+      </form>
+    </div>
   );
 }
