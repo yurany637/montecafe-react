@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Proyecto Formativo Montecafe - Módulo de Clientes (Frontend con React JS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Evidencia de Producto: GA7-220501096-AA4-EV03
+**Componente frontend del proyecto formativo y proyectos de clase (listas de chequeo)**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 1. Descripción General del Proyecto
 
-### `npm start`
+Este proyecto corresponde a la implementación del componente frontend para el **Módulo de Clientes** de la aplicación Montecafe, desarrollado utilizando **React JS**. El objetivo principal es demostrar la aplicación de los conocimientos adquiridos en el componente "Desarrollo de frontend con React JS", siguiendo los artefactos de diseño previos del ciclo del software (diagramas de clases, casos de uso, historias de usuario, diseños y prototipos).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+La funcionalidad principal de este módulo es la gestión de clientes, permitiendo realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los datos de los clientes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### 2. Características del Módulo de Clientes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El módulo de clientes implementa las siguientes funcionalidades:
 
-### `npm run build`
+* **Listado de Clientes:** Visualización de todos los clientes registrados en una tabla.
+* **Registro de Clientes:** Formulario para añadir nuevos clientes al sistema.
+* **Edición de Clientes:** Formulario para modificar la información de clientes existentes.
+* **Eliminación de Clientes:** Funcionalidad para dar de baja clientes del sistema.
+* **Navegación:** Integración con `react-router-dom` para una navegación fluida entre el listado, creación y edición de clientes.
+* **Simulación de API:** Uso de un servicio local (`clientesService.js`) que simula las interacciones con un backend, manejando los datos en memoria.
+* **Diseño Adaptado:** Implementación de la interfaz de usuario basada en el prototipo original, incluyendo el menú lateral y la estructura principal.
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Tecnologías Utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Frontend:**
+    * **React JS:** Librería para la construcción de interfaces de usuario.
+    * **Create React App:** Entorno de desarrollo para aplicaciones React.
+    * **React Router DOM:** Para la gestión de rutas y navegación entre componentes.
+* **Estilos:**
+    * **CSS Puro:** Estilos implementados en `src/styles.css` replicando el diseño del prototipo.
+* **Versionamiento:**
+    * **Git:** Sistema de control de versiones.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### 4. Estándares de Codificación y Comentarios
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* El código se ha escrito siguiendo principios de legibilidad y buenas prácticas de JavaScript/React.
+* Se utilizan nombres de variables y funciones descriptivos (camelCase).
+* Los componentes y funciones clave incluyen **comentarios** para explicar su propósito, lógica principal o secciones complejas.
+* Se utiliza la destructuración y operadores modernos de JavaScript (ES6+).
+* El código se organiza en módulos lógicos (páginas, componentes, servicios).
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5. Enlace al Repositorio
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Puedes acceder al repositorio de este proyecto en GitHub a través del siguiente enlace:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+** https://github.com/yurany637/montecafe-react.git 
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 8. Autor
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Dirley Yurany Córdoba Diaz
+* **Análisis y desarrollo de Software- 
+* **Ficha 2977429
